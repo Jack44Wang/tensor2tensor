@@ -138,6 +138,8 @@ class Transformer(t2t_model.T2TModel):
 
     decoder_input, decoder_self_attention_bias = transformer_prepare_decoder(
         targets, hparams)
+    self.encoder_output = encoder_output
+    self.attention_bias = encoder_decoder_attention_bias
 
     return self.decode(decoder_input, encoder_output,
                        encoder_decoder_attention_bias,
