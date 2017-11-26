@@ -108,8 +108,9 @@ class Transformer(t2t_model.T2TModel):
         hparams,
         cache=cache)
 
+    self.decoder_output = tf.expand_dims(decoder_output, axis=2)
     # Expand since t2t expects 4d tensors.
-    return tf.expand_dims(decoder_output, axis=2)
+    return self.decoder_output
 
   def model_fn_body(self, features):
     """Transformer main model_fn.
